@@ -43,33 +43,13 @@ form .btn-primary {
   <script src="js/d3.dependencyWheel.js"></script>
   <script src="js/composerBuilder.js"></script>
   <script>
-    //   var gitHubApiUrl = 'https://api.github.com/repos/';
-    //   var getData = function(target, callback) {
-    //     var responses = {
-    //       composerjson: null,
-    //       composerlock: null
-    //     };
-    //     var checkFinished = function() {
-    //       if (responses.composerjson && responses.composerlock) {
-    //         callback(responses.composerjson, responses.composerlock);
-    //       }
-    //     }
-    //     d3.xhr(gitHubApiUrl + target + '/contents/composer.json', 'application/vnd.github.VERSION.raw', function(err, composerjson) {
-    //       responses.composerjson = JSON.parse(composerjson.responseText);
-    //       checkFinished();
-    //     });
-    //     d3.xhr(gitHubApiUrl + target + '/contents/composer.lock', 'application/vnd.github.VERSION.raw', function(err, composerlock) {
-    //       responses.composerlock = JSON.parse(composerlock.responseText);
-    //       checkFinished();
-    //     });
-    //   };
 
       var chart = d3.chart.dependencyWheel();
       var data = {
-          packageNames: ['Main', 'A', 'B'],
-          matrix: [[0, 1, 1], // Main depends on A and B
-                   [0, 0, 1], // A depends on B
-                   [0, 0, 0]] // B doesn't depend on A or Main
+          packageNames: ['Main', 'A', 'B', 'C'], // Product, Inventor, Company (assignee)
+          matrix: [[0, 1, 1, 0], // Main depends on A and B
+                   [0, 0, 1, 1], // A depends on B
+                   [0, 0, 0 ,1]] // B doesn't depend on A or Main
         };
       d3.select('#chart_placeholder')
         .datum(data)
